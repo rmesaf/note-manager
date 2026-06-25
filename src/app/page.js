@@ -35,6 +35,9 @@ export default function Home() {
             center.
           </p>
         </div>
+        <Button isLoading={true} variant="outline">
+            Saving...
+          </Button>
         <div className="flex flex-col gap-4 text-base sm:flex-row">
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"

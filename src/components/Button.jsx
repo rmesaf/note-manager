@@ -1,6 +1,7 @@
 'use client';
 
 import { cn } from '@/utils/cn';
+import Spinner from '@/components/Spinner';
 
 /**
  * Primary reusable interaction element of the application.
@@ -51,9 +52,8 @@ const Button = ({
         )}
         {...props}
     >
-    {/* TODO: Replace with <Spinner /> component once implemented */}
-        {isLoading && null}
-        {children}
+      {isLoading && <Spinner size="sm" color="cocoa" />}
+      {children}
     </button>
   );
 };
