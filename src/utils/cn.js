@@ -11,5 +11,5 @@ import classnames from 'classnames';
  * @returns {string} A single merged and deduplicated class name string.
  */
 export function cn(...args) {
-	return twMerge(classnames(...args));
+  return twMerge(classnames(...args));
 }
