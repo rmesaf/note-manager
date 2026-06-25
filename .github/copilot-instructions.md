@@ -18,6 +18,8 @@
 - **Client Directives:** Explicitly add the `'use client'` directive at the very top of any file containing components that manage state (`useState`, `useReducer`), side effects (`useEffect`), or direct user interactions.
 
 ## Styling (Tailwind CSS)
+- **Version:** This project uses **Tailwind CSS v4.3.1**. Do not use `tailwind.config.js` or `postcss`-based configuration patterns from v3.
+- **Configuration:** All Tailwind theme extensions, custom tokens, and plugin configurations must be declared inside `src/app/globals.css` using the `@theme` and `@layer` directives. Never create a separate `tailwind.config.js` file.
 - **Tailwind Only:** Rely exclusively on Tailwind CSS utility classes. Do not create, suggest, or import standalone `.css` or `.scss` files.
 - **Dynamic Classes & Utility Structure:** Always use the project's `cn` utility (wrapper for `classnames`/`clsx` and `tailwind-merge`) when applying conditional or computed styles. Assume this utility lives in `lib/utils.js` and import it from there by default.
 
