@@ -1,26 +1,39 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-paper: #F8F1EA;
+  --color-sand: #E2CFC0;
+  --color-clay: #C49C85;
+  --color-cocoa: #7B5A49;
+  --color-ink: #2A1F1A;
+  --color-doveGray: #6D6C6C;
+  --color-white: #FFFFFF;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-workSans: var(--font-workSans);
-  --font-literata: var(--font-literata);
-}
+  /* Colores */
+  --color-paper: var(--color-paper);
+  --color-sand: var(--color-sand);
+  --color-clay: var(--color-clay);
+  --color-cocoa: var(--color-cocoa);
+  --color-ink: var(--color-ink);
+  --color-doveGray: var(--color-doveGray);
+  --color-white: var(--color-white);
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Tipografías */
+  --font-literata: var(--font-literata);
+  --font-workSans: var(--font-workSans);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-workSans), Arial, Helvetica, sans-serif;
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-workSans);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-literata);
 }
