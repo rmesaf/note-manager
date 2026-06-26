@@ -24,17 +24,17 @@ The component relies on standard JavaScript object dictionaries to resolve sizes
   * `'md'`: `w-8 h-8`
   * `'lg'`: `w-12 h-12`
   * `'xl'`: `w-16 h-16`
-* **Color Dictionary:** Maps the track (background ring) and the fill (spinning segment) to the custom palette. The track uses a lower opacity text color, while the spinning segment uses a solid fill color.
-  * `'clay'`: `text-clay/20 fill-clay`
-  * `'cocoa'`: `text-cocoa/20 fill-cocoa`
-  * `'ink'`: `text-ink/20 fill-ink`
-  * `'doveGray'`: `text-doveGray/20 fill-doveGray`
+* **Color Dictionary:** Maps the track (background ring) and the fill (spinning segment) to the custom palette. The track uses a lower-opacity fill, while the spinning segment uses a solid fill color.
+  * `'clay'`: `track: fill-clay/20, segment: fill-clay`
+  * `'cocoa'`: `track: fill-cocoa/20, segment: fill-cocoa`
+  * `'ink'`: `track: fill-ink/20, segment: fill-ink`
+  * `'doveGray'`: `track: fill-doveGray/20, segment: fill-doveGray`
 
 ### 5. Style Integration
 The component must consolidate classes using the `cn` utility to ensure external classes are applied correctly.
 
 Example implementation structure for the class resolution on the `<svg>` element:
-`className={cn("inline animate-spin", sizeDictionary[size], colorDictionary[color], className)}`
+`className={cn("inline animate-spin", sizeDictionary[size], className)}`
 
 ### 6. Behavioral Specifications (BDD)
 
