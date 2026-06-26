@@ -4,15 +4,7 @@ import Button from "@/components/Button";
 export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center text-ink font-literata">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
+      <div className="flex flex-1 w-full max-w-3xl flex-col items-center justify-center gap-4 px-4 sm:items-start">
         <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
           <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
             To get started, edit the page.js file.
@@ -35,9 +27,6 @@ export default function Home() {
             center.
           </p>
         </div>
-        <Button isLoading={true} variant="outline">
-            Saving...
-          </Button>
         <div className="flex flex-col gap-4 text-base sm:flex-row">
           <a
             href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
@@ -63,7 +52,7 @@ export default function Home() {
             <Button variant="outline">Documentation</Button>
           </a>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
