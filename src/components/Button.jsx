@@ -41,16 +41,17 @@ const Button = ({
 
   return (
     <button
-        type="button"
-        onClick={onClick}
-        aria-disabled={isDisabled ? 'true' : undefined}
-        className={cn(
-            baseClasses,
-            variantClasses[variant],
-            { 'opacity-50 cursor-not-allowed pointer-events-none': isDisabled },
-            className
-        )}
-        {...props}
+      type="button"
+      onClick={isDisabled ? undefined : onClick}
+      disabled={isDisabled}
+      aria-disabled={isDisabled}
+      className={cn(
+        baseClasses,
+        variantClasses[variant],
+        { 'opacity-50 cursor-not-allowed pointer-events-none': isDisabled },
+        className
+      )}
+      {...props}
     >
       {isLoading && <Spinner size="sm" color="cocoa" />}
       {children}
