@@ -5,7 +5,7 @@
  * @param {Object} props - Any SVG element attributes (e.g., className, aria-label).
  * @returns {JSX.Element}
  */
-const SearchIcon = (props) => (
+const SearchIcon = ({ 'aria-label': ariaLabel, ...props }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
@@ -14,7 +14,9 @@ const SearchIcon = (props) => (
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
-    aria-hidden="true"
+    aria-hidden={ariaLabel ? undefined : true}
+    role={ariaLabel ? 'img' : 'presentation'}
+    aria-label={ariaLabel}
     {...props}
   >
     <circle cx="11" cy="11" r="8" />

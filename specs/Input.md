@@ -1,5 +1,3 @@
-# File: InputSpec.md
-
 ## Component: Input
 
 ### 1. Responsibility and Purpose
@@ -58,9 +56,11 @@ const Input = React.forwardRef(({ variant = 'full', inputSize = 'base', type = '
     </div>
   );
 });
+```
 
 ### 6. Behavioral Specifications (BDD)
 
+```gherkin
   Scenario: Component registers with React Hook Form
     Given the Input is rendered within a form
     And it is passed a ref from react-hook-form's register function
@@ -83,3 +83,4 @@ const Input = React.forwardRef(({ variant = 'full', inputSize = 'base', type = '
     When the user clicks inside the input
     Then the wrapper's bottom border color should transition to the "clay" accent color
     And the native browser focus outline should remain hidden
+```
