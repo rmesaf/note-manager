@@ -1,5 +1,7 @@
 import { Literata, Work_Sans } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const literata = Literata({
   variable: "--font-literata",
@@ -24,7 +26,11 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${literata.variable} ${workSans.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <Header />
+        <main className="flex flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
