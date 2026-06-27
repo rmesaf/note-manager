@@ -88,7 +88,6 @@ const Form = ({ className, isEditMode, noteId, onSaveSuccess }) => {
    * @returns {Promise<void>}
    */
   const onSubmit = async (data) => {
-    console.log('Form submitted with data:', data);
     try {
       setIsSaving(true);
       if (isEditMode) {
