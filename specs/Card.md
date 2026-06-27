@@ -50,3 +50,4 @@ Feature: Card Component Presentation
     Given the Card component is rendered
     And the consumer passes an "aria-label" and a "data-testid" prop
     Then those native HTML properties should be applied to the root div element of the Card
+```

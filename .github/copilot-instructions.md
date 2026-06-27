@@ -21,7 +21,7 @@
 - **Version:** This project uses **Tailwind CSS v4.3.1**. Do not use `tailwind.config.js` or `postcss`-based configuration patterns from v3.
 - **Configuration:** All Tailwind theme extensions, custom tokens, and plugin configurations must be declared inside `src/app/globals.css` using the `@theme` and `@layer` directives. Never create a separate `tailwind.config.js` file.
 - **Tailwind Only:** Rely exclusively on Tailwind CSS utility classes. Do not create, suggest, or import standalone `.css` or `.scss` files.
- - **Dynamic Classes & Utility Structure:** Always use the project's `cn` utility (wrapper for `classnames`/`clsx` and `tailwind-merge`) when applying conditional or computed styles. Import it from `@/utils/cn`.
+- **Dynamic Classes & Utility Structure:** Always use the project's `cn` utility (wrapper for `classnames`/`clsx` and `tailwind-merge`) when applying conditional or computed styles. Import it from `@/utils/cn`.
 
 ## Data Persistence & Local-First Architecture
 - **Database Abstraction:** Isolate Dexie.js (IndexedDB) operations completely from visual UI components. Centralize database configuration and queries in a dedicated repository file (e.g., `lib/db.js`) and expose them via custom hooks (e.g., `useNotes`) to ensure a strict separation of concerns.

@@ -57,7 +57,7 @@ const Input = React.forwardRef(
         )}
       >
         {isSearch && (
-          <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 text-doveGray w-5 h-5" />
+          <SearchIcon className="absolute left-2 top-1/2 -translate-y-1/2 text-doveGray w-5 h-5  pointer-events-none" />
         )}
         <input
           ref={ref}
