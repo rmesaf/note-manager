@@ -28,13 +28,19 @@ import EditorToolbar from './EditorToolbar';
 const Editor = forwardRef(({ control, onUpdate, fieldName = 'description' }, ref) => {
   const editor = useEditor({
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        link: false,
+        underline: false,
+      }),
       Underline,
       Placeholder.configure({
         placeholder: 'Start writing your masterpiece here...',
       }),
       Link.configure({
         openOnClick: false,
+        HTMLAttributes: {
+          class: 'text-cocoa underline transition-colors duration-200 hover:text-cocoa/80',
+        },
       }),
       TextAlign.configure({
         types: ['heading', 'paragraph'],
@@ -52,6 +58,7 @@ const Editor = forwardRef(({ control, onUpdate, fieldName = 'description' }, ref
         onUpdate(editorInstance.getJSON());
       }
     },
+    immediatelyRender: false,
   });
 
   // Expose editor instance via ref for parent component access
@@ -274,27 +281,6 @@ const Editor = forwardRef(({ control, onUpdate, fieldName = 'description' }, ref
           ),
           onClick: () => editor?.chain().focus().toggleOrderedList().run(),
           isActive: editor?.isActive('orderedList'),
-        },
-        {
-          label: 'Task List',
-          icon: (
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-4 h-4"
-              aria-hidden="true"
-            >
-              <polyline points="9 11 12 14 22 4" />
-              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
-            </svg>
-          ),
-          onClick: () => editor?.chain().focus().toggleTaskList().run(),
-          isActive: editor?.isActive('taskList'),
         },
       ],
     },
