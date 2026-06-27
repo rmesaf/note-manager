@@ -6,6 +6,9 @@ import { useNotebooks } from '@/hooks/useNotebooks';
 import { useTags } from '@/hooks/useTags';
 import Button from '@/components/Button';
 import Card from '@/components/Card';
+import { toast } from 'sonner';
+import { useModal } from '@/context/ModalContext';
+import ConfirmModal from '@/components/ConfirmModal';
 
 /**
  * DataLayer smoke-test panel.
@@ -22,6 +25,7 @@ export default function Home() {
   const [notebookId, setNotebookId] = useState(undefined);
   const { notes, createNote, updateNote, deleteNote } = useNotes({ notebookId });
   const { tags, createTag, deleteTag } = useTags();
+  const { openModal } = useModal();
 
   const [log, setLog] = useState([]);
   const [tagInput, setTagInput] = useState('');
@@ -42,6 +46,7 @@ export default function Home() {
       description: { type: 'doc', content: [] },
       notebookId,
     });
+    toast.success('Nota guardada');
     addLog(`✅ Note created: ${id} — BDD #1 ✓`);
   };
 
@@ -66,9 +71,16 @@ export default function Home() {
     }
   };
 
-  const handleDeleteNote = async (id) => {
-    await deleteNote(id);
-    addLog(`🗑️ Note deleted: ${id}`);
+  const handleDeleteNote = (id) => {
+    openModal(ConfirmModal, {
+      message: 'Are you sure you want to delete this note?',
+      onAccept: async () => {
+        await deleteNote(id);
+        toast.success('Note deleted successfully.');
+        addLog(`🗑️ Note deleted: ${id}`);
+      },
+      onCancel: () => {},
+    });
   };
 
   return (

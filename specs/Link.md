@@ -51,3 +51,4 @@ Feature: Link Component Navigation and Styling
     And the consumer passes the prop "prefetch={false}"
     Then the underlying next/link component should receive the "prefetch" prop
     And the Next.js router should not prefetch the route on viewport intersection
+```

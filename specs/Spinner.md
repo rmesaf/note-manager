@@ -58,3 +58,4 @@ Feature: Spinner Component Visual Feedback
     Then the wrapper or SVG element should have the role="status" attribute
     And there should be a nested span element containing the text "Loading..."
     And the nested span should have the "sr-only" class applied to remain visually hidden
+```
