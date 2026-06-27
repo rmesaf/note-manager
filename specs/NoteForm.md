@@ -1,5 +1,3 @@
-# File: NoteFormSpec.md
-
 ## Feature: Create and Edit Note Page
 
 ### 1. Responsibility and Purpose
