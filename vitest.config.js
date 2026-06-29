@@ -36,11 +36,19 @@ export default defineConfig({
      */
     globals: true,
 
+    /**
+     * Colocation strategy: Vitest only picks up *.test.{js,jsx} files inside
+     * src/. E2E specs (e2e/**) are owned exclusively by Playwright and must
+     * never be executed by Vitest.
+     */
+    include: ['src/**/*.test.{js,jsx}'],
+    exclude: ['node_modules', 'e2e', '.next'],
+
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'lcov'],
       include: ['src/**/*.{js,jsx}'],
-      exclude: ['src/app/**', 'src/**/*.test.{js,jsx}', 'src/**/__tests__/**'],
+      exclude: ['src/app/**', 'src/**/*.test.{js,jsx}'],
     },
   },
 });
