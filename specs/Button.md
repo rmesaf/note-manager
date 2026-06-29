@@ -63,4 +63,32 @@ Feature: Button Component Interactions
     Then the button should have no background, cocoa text, and an underline
     When the user hovers over the button
     Then the text opacity should decrease slightly
+
+  Scenario: Button is rendered as an outline variant
+    Given the button is rendered with the variant prop set to "outline"
+    Then the button should have a transparent background
+    And a cocoa-colored border and text
+
+  Scenario: Button defaults to type="button" to prevent form submission
+    Given the button is rendered without an explicit type prop
+    Then the button element should have the attribute type="button"
+
+  Scenario: Button accepts a type override via props
+    Given the button is rendered with type="submit" passed via props
+    Then the button element should have the attribute type="submit"
+
+  Scenario: Button exposes aria-disabled for assistive technology
+    Given the button is rendered with either the disabled or isLoading prop set to true
+    Then the button element should have the aria-disabled="true" attribute
+    And screen readers should be able to announce the disabled state
+
+  Scenario: Active button can receive keyboard focus
+    Given the button is rendered in an active state
+    When the user navigates with the Tab key
+    Then the button should receive focus
+
+  Scenario: Disabled button cannot receive keyboard focus
+    Given the button is rendered with the disabled prop set to true
+    When the user navigates with the Tab key
+    Then the button should not receive focus
 ```

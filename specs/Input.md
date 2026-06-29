@@ -83,4 +83,32 @@ const Input = React.forwardRef(({ variant = 'full', inputSize = 'base', type = '
     When the user clicks inside the input
     Then the wrapper's bottom border color should transition to the "clay" accent color
     And the native browser focus outline should remain hidden
+
+  Scenario: User types into the input and onChange is triggered
+    Given the Input is rendered with an onChange handler
+    When the user types a value into the input field
+    Then the onChange handler should be called for each keystroke
+    And the input's value should reflect the typed text
+
+  Scenario: Input renders with a placeholder attribute
+    Given the Input is rendered with a placeholder prop
+    Then the native input element should have the corresponding placeholder attribute
+
+  Scenario: Input is disabled via props spreading
+    Given the Input is rendered with the disabled prop set to true
+    Then the native input element should be disabled
+    And the user should not be able to type into it
+
+  Scenario: Component renders with the default "full" border variant
+    Given the Input is rendered without an explicit variant prop
+    Then the wrapper should have the full border, rounded corners, and sand color classes
+
+  Scenario: Forwarded ref is attached to the native input element
+    Given the Input is rendered with a React ref
+    Then the ref.current should point directly to the native input DOM node
+
+  Scenario: inputClassName applies additional classes to the inner input only
+    Given the Input is rendered with an inputClassName prop
+    Then the extra classes should be present on the inner input element
+    And should not affect the wrapper div
 ```

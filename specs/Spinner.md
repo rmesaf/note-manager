@@ -58,4 +58,31 @@ Feature: Spinner Component Visual Feedback
     Then the wrapper or SVG element should have the role="status" attribute
     And there should be a nested span element containing the text "Loading..."
     And the nested span should have the "sr-only" class applied to remain visually hidden
+
+  Scenario: SVG is hidden from the accessibility tree
+    Given the Spinner component is rendered
+    Then the SVG element should have the aria-hidden="true" attribute
+    So that screen readers rely on the sr-only span instead of the decorative graphic
+
+  Scenario: Component renders with large size variant
+    Given the Spinner is rendered with the size prop set to "lg"
+    Then the SVG should have dimensions corresponding to "lg" (w-12 h-12)
+
+  Scenario: Component renders with extra-large size variant
+    Given the Spinner is rendered with the size prop set to "xl"
+    Then the SVG should have dimensions corresponding to "xl" (w-16 h-16)
+
+  Scenario: Component renders with ink color scheme
+    Given the Spinner is rendered with the color prop set to "ink"
+    Then the track path should have the "fill-ink/20" class
+    And the segment path should have the "fill-ink" class
+
+  Scenario: Component renders with doveGray color scheme
+    Given the Spinner is rendered with the color prop set to "doveGray"
+    Then the track path should have the "fill-doveGray/20" class
+    And the segment path should have the "fill-doveGray" class
+
+  Scenario: Consumer applies additional classes via className
+    Given the Spinner is rendered with an extra class like "mx-auto"
+    Then the SVG element should include the "mx-auto" class alongside "animate-spin"
 ```
