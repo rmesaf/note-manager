@@ -35,6 +35,8 @@ export default function RootLayout({ children }) {
           <Footer />
         </ModalProvider>
         <Toaster position="top-right" richColors closeButton />
+        {/* Dedicated portal root for modals — keeps modal DOM outside the app tree */}
+        <div id="modal-root" />
       </body>
     </html>
   );

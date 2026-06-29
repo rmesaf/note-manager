@@ -5,16 +5,20 @@ import { createPortal } from 'react-dom';
 
 /**
  * Portal-based structural shell for all modals.
- * @description Renders its children outside the normal React tree (into document.body)
- * via createPortal, preventing z-index conflicts with any stacking context in the app.
+ * @description Renders its children outside the normal React tree (into the dedicated
+ * `<div id="modal-root">` element defined in the root layout) via createPortal,
+ * preventing z-index conflicts with any stacking context in the app. Using a dedicated
+ * portal root instead of document.body keeps the DOM semantically clean and makes
+ * portal content trivially identifiable in DevTools and tests.
  * Manages three cross-cutting accessibility concerns so individual modal components
  * don't need to re-implement them: scroll lock, Escape key dismissal, and backdrop click.
  * @param {Object} props
  * @param {React.ReactNode} props.children - The modal component to render inside the wrapper.
  * @param {Function} props.onClose - Callback to close the modal, injected by ModalProvider.
- * @returns {React.Portal}
+ * @returns {React.Portal|null}
  */
 const ModalWrapper = ({ children, onClose }) => {
+  const portalRoot = document.getElementById('modal-root');
   useEffect(() => {
     /**
      * Locks background scroll while the modal is mounted.
@@ -40,6 +44,8 @@ const ModalWrapper = ({ children, onClose }) => {
     if (e.target === e.currentTarget) onClose();
   };
 
+  if (!portalRoot) return null;
+
   return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-ink/50 backdrop-blur-sm p-4"
@@ -49,7 +55,7 @@ const ModalWrapper = ({ children, onClose }) => {
     >
       {children}
     </div>,
-    document.body
+    portalRoot
   );
 };
 
