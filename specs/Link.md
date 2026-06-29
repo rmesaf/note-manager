@@ -51,4 +51,26 @@ Feature: Link Component Navigation and Styling
     And the consumer passes the prop "prefetch={false}"
     Then the underlying next/link component should receive the "prefetch" prop
     And the Next.js router should not prefetch the route on viewport intersection
+
+  Scenario: Link renders its children content
+    Given the Link component is rendered with an href and text children
+    Then the anchor element should contain the provided text
+
+  Scenario: Link opens in a new tab with target="_blank"
+    Given the Link component is rendered with the prop target="_blank"
+    Then the rendered anchor should have the attribute target="_blank"
+
+  Scenario: Link automatically injects rel="noopener noreferrer" for external links
+    Given the Link component is rendered with the prop target="_blank"
+    Then the rendered anchor should have a rel attribute containing "noopener"
+    And the rel attribute should contain "noreferrer"
+    So that reverse tabnapping attacks are prevented
+
+  Scenario: Consumer-provided rel is preserved alongside security tokens
+    Given the Link component is rendered with target="_blank" and rel="sponsored"
+    Then the rendered anchor rel attribute should contain "noopener noreferrer sponsored"
+
+  Scenario: Link does not add rel tokens when target is not "_blank"
+    Given the Link component is rendered without a target prop
+    Then the rendered anchor should not have a rel attribute set by the component
 ```

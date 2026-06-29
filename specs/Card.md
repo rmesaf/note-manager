@@ -50,4 +50,21 @@ Feature: Card Component Presentation
     Given the Card component is rendered
     And the consumer passes an "aria-label" and a "data-testid" prop
     Then those native HTML properties should be applied to the root div element of the Card
+
+  Scenario: Component renders its children content
+    Given the Card component is rendered with text content as children
+    Then the text content should be visible inside the Card's root element
+
+  Scenario: Component renders complex element children
+    Given the Card component is rendered with a nested React element as children
+    Then the nested element should be present in the DOM inside the Card
+
+  Scenario: Additional className is applied alongside base styles
+    Given the Card component is rendered with an extra class like "mt-8"
+    Then the root div should have both the "mt-8" class and the base "bg-white" class
+
+  Scenario: Consumer attaches a click handler via props
+    Given the Card component is rendered with an onClick handler
+    When the user clicks on the Card
+    Then the onClick handler should be called once
 ```
